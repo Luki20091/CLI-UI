@@ -14,7 +14,7 @@ A simple full-stack app using **Vite + React** (client) and **Node.js + Express*
 ```bash
 cli-ui/
 ├── client/    # Frontend - React + Vite + Tailwind CSS
-├── server/    # Backend - Node.js + Express API
+├── server/    # Backend (optional) - Node.js + Express API
 └── package.json  # Main dependencies and workspace configuration
 ```
 

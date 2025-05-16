@@ -11,8 +11,10 @@
     "security.workspace.trust.untrustedFiles": "open",
     "workbench.iconTheme": "vscode-icons",
     "css.validate": false,
+    "json.schemaDownload.enable": false,
     "tailwindCSS.experimental.classRegex": [
         "class\\s*=\\s*\"([^\"]*)\"",
         "className\\s*=\\s*\"([^\"]*)\""
     ]
+    
 }
