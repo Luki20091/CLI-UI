@@ -1,40 +1,21 @@
+// server/index.js
 import express from 'express';
 import cors from 'cors';
-import { spawn } from 'child_process';
-import path from 'path';
+import dotenv from 'dotenv';
+import apiRouter from './src/index.js';
+
+// Load .env
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// POST /api/command/:command?args[]=...
-app.post('api/command/:command', (req, res) => {
-  const command = req.params.command;       // np. "--version" lub "ask"
-  const args = req.body.args || [];         // np. ["--help"]
+// Mount API routes under /api
+app.use('/api', apiRouter);
 
-  // Jeżeli potrzebujesz ścieżki do skryptu Python:
-  // const scriptPath = path.resolve(__dirname, '../corebrain-cs/your_script.py');
-  // const pythonArgs = [scriptPath, command, ...args];
-  const pythonArgs = [command, ...args];
+// Health check endpoint
+app.get('/', (_req, res) => res.send('Server is running'));
 
-  const child = spawn('corebrain', pythonArgs, { shell: true });
-
-  let stdout = '';
-  let stderr = '';
-
-  child.stdout.on('data', data => stdout += data.toString());
-  child.stderr.on('data', data => stderr += data.toString());
-
-  child.on('close', code => {
-    if (code === 0) {
-      res.json({ output: stdout.trim() });
-    } else {
-      res.status(500).json({ error: stderr.trim() || 'Unknown error' });
-    }
-  });
-});
-
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Node server running on http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 5140;
+app.listen(PORT, () => console.log(`🚀 Server listening on http://localhost:${PORT}`));

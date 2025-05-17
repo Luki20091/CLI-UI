@@ -1,19 +1,19 @@
+// client/src/App.jsx
 import React, { useState } from 'react';
-import { runCommand } from './utils/api';
+import { useCommandListener } from './hooks/useCommandListener';
 
 export default function App() {
   const [output, setOutput] = useState('');
 
-  async function testVersion() {
-    setOutput('Loading...');
-    const result = await runCommand('--version');
-    if (result.error) setOutput(`Error: ${result.error}`);
-    else setOutput(result.output);
-  }
+  useCommandListener(setOutput);
 
   return (
     <div>
-      <button onClick={testVersion}>Run --version</button>
+      <h1>Corebrain CLI Interface</h1>
+      <div>
+        <button data-command="--version">Run --version</button>
+        {/* Add more buttons with data-command/data-args as needed */}
+      </div>
       <pre>{output}</pre>
     </div>
   );
