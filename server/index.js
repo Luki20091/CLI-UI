@@ -7,8 +7,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// POST /commands/:command?args[]=...
-app.post('/commands/:command', (req, res) => {
+// POST /api/command/:command?args[]=...
+app.post('api/command/:command', (req, res) => {
   const command = req.params.command;       // np. "--version" lub "ask"
   const args = req.body.args || [];         // np. ["--help"]
 
@@ -34,7 +34,7 @@ app.post('/commands/:command', (req, res) => {
   });
 });
 
-const PORT = 5140;
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Node server running on http://localhost:${PORT}`);
 });

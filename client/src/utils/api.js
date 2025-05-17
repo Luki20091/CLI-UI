@@ -1,7 +1,7 @@
 export async function runCommand(command, args = []) {
   try {
     const res = await fetch(
-      `http://localhost:5140/commands/${encodeURIComponent(command)}`,
+      `http://localhost:5000/api/command/${encodeURIComponent(command)}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
