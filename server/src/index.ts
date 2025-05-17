@@ -14,7 +14,7 @@ app.get('/', (_req, res) => {
   res.send('Server działa!');
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5140;
 app.listen(PORT, () => {
   console.log(`🚀 Server listening on http://localhost:${PORT}`);
 });

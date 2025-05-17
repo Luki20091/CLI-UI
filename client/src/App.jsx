@@ -1,18 +1,20 @@
-import React, { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
-
-const Login  = lazy(() => import('./routes/Login'));
-const Config = lazy(() => import('./routes/Config'));
-const Chat   = lazy(() => import('./routes/Chat'));
+import React, { useState } from 'react';
+import { runCommand } from './utils/api';
 
 export default function App() {
+  const [output, setOutput] = useState('');
+
+  async function testVersion() {
+    setOutput('Loading...');
+    const result = await runCommand('--version');
+    if (result.error) setOutput(`Error: ${result.error}`);
+    else setOutput(result.output);
+  }
+
   return (
-    <Suspense fallback={<div className="mt-8 text-center text-white">Ładowanie…</div>}>
-      <Routes>
-        <Route path="/"       element={<Login />} />
-        <Route path="/config" element={<Config />} />
-        <Route path="/chat"   element={<Chat />} />
-      </Routes>
-    </Suspense>
+    <div>
+      <button onClick={testVersion}>Run --version</button>
+      <pre>{output}</pre>
+    </div>
   );
 }
