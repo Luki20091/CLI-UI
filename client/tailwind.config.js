@@ -10,7 +10,8 @@ export default {
   },
   plugins: [
     require("tw-animate-css"),
-    require("daisyui")
+    require("daisyui"),
+    require("flowbite")
   ],
   daisyui: {
     themes: [

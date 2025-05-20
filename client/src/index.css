@@ -1,9 +1,92 @@
 @tailwind utilities;
 
-
 :root {
-  --radius: 0.625rem;
+  --blue1:  hsl(210 10%  9%);
+  --blue2:  hsl(210 10% 12%);
+  --blue3:  hsl(210 10% 16%);
+  --blue4:  hsl(210 10% 20%);
+  --blue5:  hsl(210 10% 25%);
+  --blue6:  hsl(210 10% 32%);
+  --blue7:  hsl(210 10% 40%);
+  --blue8:  hsl(210 10% 50%);
+  --blue9:  hsl(210 10% 60%);
+  --blue10: hsl(210 10% 70%);
+  --blue11: hsl(210 10% 80%);
+  --blue12: hsl(210 10% 95%);
+
+
+  
+  --blue-accent-1: hsl(210 60% 45%);  
+  --blue-accent-2: hsl(210 70% 50%); 
+  --blue-accent-3: hsl(210 80% 55%); 
+  --blue-accent-4: hsl(210 90% 60%);
 }
 
-/* Możesz nadal mieć zmienną radius, ale cała reszta bierze się z DaisyUI */
 
+
+*, ::after, ::before {
+    box-sizing: border-box;
+    outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+html, body {
+  background-color: var(--blue1);
+  color: var(--blue12);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#root {
+  background-color: var(--blue2);
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  position: relative;
+  margin: 12px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background-color: var(--blue-accent-2);
+  color: var(--blue12);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+
+
+.btn:hover {
+  background-color: var(--blue-accent-3);
+}
+
+
+
+
+.flex-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* opcjonalnie odstęp między przyciskami */
+}
