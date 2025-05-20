@@ -30,6 +30,8 @@
     border: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
+    margin: 0;
+    padding: 0;
 }
 
 html::-webkit-scrollbar,
@@ -59,8 +61,10 @@ html, body {
   position: relative;
   margin: 12px;
   border-radius: 20px;
+  /*display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
+  padding: 20px;
 }
 
 .btn {
