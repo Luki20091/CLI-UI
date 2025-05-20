@@ -14,8 +14,6 @@
   --blue11: hsl(210 10% 80%);
   --blue12: hsl(210 10% 95%);
 
-
-  
   --blue-accent-1: hsl(210 60% 45%);  
   --blue-accent-2: hsl(210 70% 50%); 
   --blue-accent-3: hsl(210 80% 55%); 
@@ -32,6 +30,7 @@
     box-shadow: none !important;
     margin: 0;
     padding: 0;
+    font-family: 'Inter', sans-serif;
 }
 
 html::-webkit-scrollbar,
@@ -92,5 +91,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* opcjonalnie odstęp między przyciskami */
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem; 
 }

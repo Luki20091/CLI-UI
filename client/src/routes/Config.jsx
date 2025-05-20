@@ -1,72 +1,65 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCommandListener } from '../hooks/useCommandListener'; 
 
 export default function Config() {
-  const nav = useNavigate();
-  const [flags, setFlags] = useState({
-    configure: false,
-    listConfigs: false,
-    removeConfig: false,
-    showSchema: false,
-    extractSchema: false,
-    loginSSO: false,
-    testAuth: false,
-  });
-  const [fields, setFields] = useState({
-    outputFile: '',
-    configId: '',
-    token: '',
-    apiKey: '',
-    apiUrl: '',
-    ssoUrl: '',
-  });
-
-  const toggle = key => setFlags(f => ({ ...f, [key]: !f[key] }));
-  const change = (key, val) => setFields(f => ({ ...f, [key]: val }));
+  const [output, setOutput] = useState('');
+  const navigate = useNavigate();
+  useCommandListener(setOutput);
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 bg-base-100">
-      <div className="w-full max-w-2xl shadow-lg card bg-base-100">
-        <div className="space-y-4 card-body">
-          <h2 className="text-2xl font-bold">Ustawienia Corebrain</h2>
-
-          {/* Przełączniki */}
-          {Object.entries(flags).map(([key, val]) => (
-            <label key={key} className="flex items-center justify-between">
-              <span className="capitalize">{`--${key}`}</span>
-              <input
-                type="checkbox"
-                className="toggle toggle-secondary"
-                checked={val}
-                onChange={() => toggle(key)}
-              />
-            </label>
-          ))}
-
-          {/* Pola tekstowe */}
-          {Object.entries(fields).map(([key, val]) => (
-            <div key={key} className="flex flex-col">
-              <label className="mb-1 capitalize">{`--${key}`}</label>
-              <input
-                type="text"
-                className="w-full input input-bordered"
-                value={val}
-                placeholder={key}
-                onChange={e => change(key, e.target.value)}
-              />
-            </div>
-          ))}
-
-          <div className="justify-end card-actions">
-            <button
-              className="btn btn-primary"
-              onClick={() => nav('/chat')}
-            >
-              Zapisz i czat
-            </button>
-          </div>
+    <div>
+      <div class="flex-center">
+        <div className="flex-center">
+          <button data-command="--help"         className="btn">Run --help</button>
+          <button data-command="--version"      className="btn">Run --version</button>
+          <button data-command="--list-configs" className="btn">Run --list-configs</button>
+          <button data-command="--remove-config" className="btn">Run --remove-config</button>
+          <button data-command="--show-schema"  className="btn">Run --show-schema</button>
+          <button data-command="--extract-schema" className="btn">Run --extract-schema</button>
+          
+          <button
+            data-command="--output-file"
+            data-args="schema.sql"
+            className="btn"
+          >
+            Run --output-file
+          </button>
+          <button
+            data-command="--config-id"
+            data-args="myConfigId"
+            className="btn"
+          >
+            Run --config-id
+          </button>
+          <button
+            data-command="--token"
+            data-args="ABC123"
+            className="btn"
+          >
+            Run --token
+          </button>
+          <button
+            data-command="--api-key"
+            data-args="XYZ789"
+            className="btn"
+          >
+            Run --api-key
+          </button>
+          <button data-command="--api-url" className="btn">
+            Run --api-url
+          </button>
+          <button data-command="--sso-url" className="btn">
+            Run --sso-url
+          </button>
+          <button data-command="--login"       className="btn">Run --login</button>
+          <button data-command="--test-auth"   className="btn">Run --test-auth</button>
         </div>
+
       </div>
+
+
+      <pre>{output}</pre>
     </div>
   );
 }

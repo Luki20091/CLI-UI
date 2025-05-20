@@ -1,9 +1,0 @@
-@tailwind utilities;
-
-
-:root {
-  --radius: 0.625rem;
-}
-
-/* Możesz nadal mieć zmienną radius, ale cała reszta bierze się z DaisyUI */
-

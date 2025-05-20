@@ -20,9 +20,29 @@ cli-ui/
 
 ## 🚀 Getting Started
 
+### 1. Clone Repo
 ```bash
 git clone https://github.com/Luki20091/CLI-UI.git
 cd CLI-UI
+```
 
+### 2. Client
+```bash
+cd client
 npm install
+npm install history
+npm install --save-dev vite
+```
+
+### 3. Server
+```bash
+cd ../server
+npm install
+npm install --save-dev ts-node-dev
+```
+
+### 4. Run
+```bash
+cd ..
 npm run dev
+```

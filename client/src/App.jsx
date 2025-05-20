@@ -1,22 +1,20 @@
-// client/src/App.jsx
-import React, { useState } from 'react';
-import { useCommandListener } from './hooks/useCommandListener';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function App() {
-  const [output, setOutput] = useState('');
+  const navigate = useNavigate();
 
-  useCommandListener(setOutput);
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('login') === 'true';
+    if (!loggedIn) {
+      navigate('/Login');
+    }
+  }, [navigate]);
 
   return (
-    <div>
-      <div class="flex-center">
-        <button data-command="--help" class="btn center">Run --help</button>
-        <button data-command="--version" class="btn center">Run --version</button>
-        {/* Add more buttons with data-command/data-args as needed */}
-      </div>
-
-
-      <pre>{output}</pre>
+    <div className="flex-center">
+      <p>Ładowanie...</p>
     </div>
   );
 }
