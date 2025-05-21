@@ -6,7 +6,7 @@ export default function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem('login') === 'true';
+    const loggedIn = localStorage.getItem('login') === 'false' ? false : true; //to change later
     if (!loggedIn) {
       navigate('/Login');
     }
