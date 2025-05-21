@@ -5,9 +5,8 @@ import { useCommandListener } from '../hooks/useCommandListener';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faSpinner);
+import { faSpinner, faLock } from '@fortawesome/free-solid-svg-icons';
+library.add(faSpinner, faLock);
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -27,17 +26,18 @@ export default function Login() {
   }
 
   return (
-    <div className="flex-center" style={{ flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex-center">
       <button onClick={handleLogin} disabled={loading} className="btn">
         {loading ? (
           <>
-            <FontAwesomeIcon icon="spinner" spin />&nbsp;&nbsp;Login
+            <FontAwesomeIcon icon={faSpinner} spin/>&nbsp;&nbsp;Login
           </>
         ) : (
-          'Login'
+          <>
+            <FontAwesomeIcon icon={faLock} />&nbsp;&nbsp;Login
+          </>
         )}
       </button>
-      <pre>{output}</pre>
     </div>
   );
 }
