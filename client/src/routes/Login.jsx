@@ -20,7 +20,6 @@ export default function Login() {
     const result = await fakeAuth();
     setLoading(false);
     if (result) {
-      localStorage.setItem('login', 'true');
       navigate('/Config');
     }
   }

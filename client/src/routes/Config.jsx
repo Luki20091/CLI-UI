@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCommandListener } from '../hooks/useCommandListener'; 
+import { fakeUnAuth } from '../utils/auth';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComments } from '@fortawesome/free-solid-svg-icons';
+import { faComments, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 export default function Config() {
+  const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState('');
   const navigate = useNavigate();
   
@@ -16,10 +18,30 @@ export default function Config() {
     navigate('/Chat');
   }
 
+  async function handleLogout() {
+    setLoading(true);
+    const result = await fakeUnAuth();
+    setLoading(false);
+    if (result) {
+      navigate('/Login');
+    }
+  }
+
   return (
     <div>
       <div class="flex-center">
         <div class="flex-center">
+          <button onClick={handleLogout} disabled={loading} className="btn">
+            {loading ? (
+              <>
+                <FontAwesomeIcon icon={faSpinner} spin/>&nbsp;&nbsp;Logout
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon icon={faComments} />&nbsp;&nbsp;Logout
+              </>
+            )}
+          </button>
           <button onClick={handleChat} className="btn">
             <FontAwesomeIcon icon={faComments} />&nbsp;&nbsp;Chat
           </button>
