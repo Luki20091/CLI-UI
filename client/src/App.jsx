@@ -6,9 +6,12 @@ export default function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem('login') === 'false' ? false : true; //to change later
+    const loggedIn = localStorage.getItem('login'); //to change later
+    console.log('loggedIn', loggedIn);
     if (!loggedIn) {
       navigate('/Login');
+    } else {
+      navigate('/Config');
     }
   }, [navigate]);
 

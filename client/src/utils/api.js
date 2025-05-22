@@ -1,4 +1,3 @@
-// client/src/utils/api.js
 /**
  * General helper to execute any Corebrain CLI command via HTTP.
  * @param {string[]} argsArray - Array of command name and arguments (e.g., ["--version"]).
