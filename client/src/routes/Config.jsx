@@ -45,7 +45,7 @@ export default function Config() {
           <button onClick={handleChat} className="btn">
             <FontAwesomeIcon icon={faComments} />&nbsp;&nbsp;Chat
           </button>
-          <button data-command="--version" className="btn">Run --version</button>
+          <button data-command="?" className="btn">Run ?</button>
           <button data-command="--version" className="btn">Run --version</button>
           <button data-command="--check-status" className="btn">Run --check-status</button>
           <button data-command="--authentication" className="btn">Run --authentication</button>
