@@ -6,18 +6,12 @@ export default function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem('login'); //to change later
-    console.log('loggedIn', loggedIn);
-    if (!loggedIn) {
-      navigate('/Login');
-    } else {
-      navigate('/Config');
-    }
+    navigate('/Config');
   }, [navigate]);
 
   return (
     <div className="flex-center">
-      <p>Ładowanie...</p>
+      <p>Loading...</p>
     </div>
   );
 }

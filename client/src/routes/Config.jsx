@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCommandListener } from '../hooks/useCommandListener'; 
-import { unAuth } from '../utils/auth';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,30 +17,10 @@ export default function Config() {
     navigate('/Chat');
   }
 
-  async function handleLogout() {
-    setLoading(true);
-    const result = await unAuth();
-    setLoading(false);
-    if (result) {
-      navigate('/Login');
-    }
-  }
-
   return (
     <div>
       <div class="flex-center">
         <div class="flex-center">
-          <button onClick={handleLogout} disabled={loading} className="btn">
-            {loading ? (
-              <>
-                <FontAwesomeIcon icon={faSpinner} spin/>&nbsp;&nbsp;Logout
-              </>
-            ) : (
-              <>
-                <FontAwesomeIcon icon={faComments} />&nbsp;&nbsp;Logout
-              </>
-            )}
-          </button>
           <button onClick={handleChat} className="btn">
             <FontAwesomeIcon icon={faComments} />&nbsp;&nbsp;Chat
           </button>
