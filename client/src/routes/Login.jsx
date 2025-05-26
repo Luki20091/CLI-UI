@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fakeAuth } from '../utils/auth';
+import { auth } from '../utils/auth';
 import { useCommandListener } from '../hooks/useCommandListener';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -17,7 +17,7 @@ export default function Login() {
 
   async function handleLogin() {
     setLoading(true);
-    const result = await fakeAuth();
+    const result = await auth();
     setLoading(false);
     if (result) {
       navigate('/Config');
@@ -26,7 +26,7 @@ export default function Login() {
 
   return (
     <div className="flex-center">
-      <button onClick={handleLogin} disabled={loading} className="btn">
+      <button onClick={handleLogin} disabled={loading} data-command="--authentication" className="btn">
         {loading ? (
           <>
             <FontAwesomeIcon icon={faSpinner} spin/>&nbsp;&nbsp;Login
