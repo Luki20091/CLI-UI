@@ -102,3 +102,74 @@ html, body {
   width: 100%;
   gap: 1rem; 
 }
+
+
+
+
+
+
+
+.btn-send {
+  background-color: var(--blue-4);
+  color: var(--blue12);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 13px;
+  margin: 10px;
+  font-size: 18px;
+  outline: none;
+}
+
+.textarea {
+  padding: 12px;
+  border-radius: 13px;
+  margin: 10px;
+  field-sizing: content;
+  resize: none;
+  font-size: 18px;
+}
+
+.chat-end {
+  float: right;
+  text-align: center;
+  border: 2px;
+  padding: 13px;
+  border-radius: 20px;
+  background-color: var(--blue-accent-1);
+  word-wrap: break-word;
+  max-width: 50%;
+  margin: 3%;
+}
+
+.chat-start {
+  float: left;
+  text-align: center;
+  border: 2px;
+  padding: 13px;
+  border-radius: 20px;
+  background-color: var(--blue4);
+  word-wrap: break-word;
+  max-width: 50%;
+  margin: 3%;
+}
+
+.chat-bubble {
+  width: 100%;
+  float: left;
+}
+
+
+
+.btn-secondary {
+    width: 60px !important;
+    min-width: 60px !important;
+    height: 50px !important;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    padding-right: 16px;
+}
