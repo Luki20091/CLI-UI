@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LoadingDots } from '@/components/LoadingDots';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+
 export default function Chat() {
   const [msgs, setMsgs] = useState([]);
   const [text, setText] = useState('');
@@ -22,16 +25,18 @@ export default function Chat() {
     }, 1000);
   };
 
+  
+
   return (
-    <div className="relative flex items-center justify-center min-h-screen p-4 bg-base-100">
-      <div className="card w-full max-w-lg shadow-lg bg-base-100 flex flex-col h-[80vh]">
-        <div className="flex-1 space-y-4 overflow-y-auto card-body">
+    <div className="relative flex items-center justify-center p-4 bg-base-100 h-[100%]">
+      <div className="card w-full max-w-lg shadow-lg bg-base-100 flex flex-col h-[100%] ">
+        <div className="flex-1 px-4 pt-4 space-y-4 overflow-y-auto">
           {msgs.map((m,i) => (
             <div
               key={i}
-              className={`chat chat-${m.sender === 'user' ? 'end' : 'start'}`}
+              className={`chat chat-${m.sender === 'user' ? 'end' : 'start'} clear-both`}
             >
-              <div className="chat-bubble">{m.text}</div>
+              <div className="chat-bubble w-min">{m.text}</div>
             </div>
           ))}
           {loading && (
@@ -49,14 +54,13 @@ export default function Chat() {
             rows={1}
             value={text}
             onChange={e => setText(e.target.value)}
-            placeholder="Wpisz wiadomość..."
+            placeholder="Write here..."
           />
-          <button className="btn btn-secondary" onClick={send}>
-            Wyślij
+          <button className="btn btn-secondary" onClick={send} >
+            <FontAwesomeIcon icon={faPaperPlane} />
           </button>
         </div>
       </div>
-      <div className="absolute badge badge-outline bottom-4 right-4">{version}</div>
     </div>
   );
 }
